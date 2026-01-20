@@ -132,19 +132,19 @@
 
         const itineraryData = [
             { 
-                id: 1, imgNum: 12, date: "20 марта", title: "Баден-Баден", 
-                history: "Выезд из Штутгарта. Погружение в атмосферу XIX века в Баден-Бадене — городе, который называли 'летней столицей Европы'. Здесь собиралась вся европейская знать и русская интеллигенция.", 
+                id: 1, imgNum: 12, date: "20 марта", title: "Штутгарт – Баден-Баден – Эпфиг", 
+                history: "Выезд из Штутгарта. Первая остановка в Баден-Бадене — 'летней столице Европы'. После прогулки и обеда — переезд в Эльзас, в тихую коммуну Эпфиг, которая станет вашим домом на время путешествия.", 
                 points: [
-                    {name: "Trinkhalle", details: "Галерея с 16 колоннами и фресками по мотивам шварцвальдских легенд. Идеальное место для начала прогулки."},
-                    {name: "Lichtentaler Allee", details: "Легендарный парк-променад вдоль реки Оос, обрамленный виллами в стиле модерн."},
-                    {name: "Kurhaus & Casino", details: "Дворец в стиле классицизма, чьи интерьеры Достоевский описал в романе 'Игрок'."}
+                    {name: "Trinkhalle", details: "Галерея с фресками по мотивам шварцвальдских легенд."},
+                    {name: "Lichtentaler Allee", details: "Легендарный парк-променад вдоль реки Оос."},
+                    {name: "Kurhaus", details: "Дворец, чьи интерьеры помнят Тургенева и Достоевского."}
                 ], 
                 gastronomy: [
-                    {type: "Обед", name: "Café König", desc: "Кулинарная легенда города. Рекомендуем торт 'Шварцвальд' и марципаны ручной работы."},
-                    {type: "Традиции", name: "Brennery", desc: "Продегустируйте местный фруктовый шнапс из черной вишни."}
+                    {type: "Обед", name: "Café König", desc: "Кондитерская с вековой историей. Торт 'Шварцвальд' обязателен."},
+                    {type: "Традиции", name: "Brennery", desc: "Дегустация фруктового шнапса."}
                 ], 
-                shopping: "Косметика на основе термальной воды Sans Soucis, ароматы Baden-Baden.", 
-                tips: "Если позволяет время, загляните в музей Фаберже или музей Фридера Бурды (современная архитектура на фоне исторического парка)." 
+                shopping: "Косметика на термальной воде, марципаны Café König.", 
+                tips: "В Эпфиге рекомендуется вечерняя прогулка среди виноградников для настройки на эльзасский лад." 
             },
             { id: 2, imgNum: 2, date: "21 марта", title: "Страсбург", history: "Вольный город империи. Кафедральный собор.", points: [{name: "Cathédrale", details: "Шпиль в фригийском колпаке."}], gastronomy: [{type: "Обед", name: "Maison Kammerzell", desc: "Дом 1427 года."}], shopping: "Rue des Orfèvres.", tips: "Часы в 12:30." },
             { id: 3, imgNum: 3, date: "22 марта", title: "Верхний Кенигсбург", history: "Замок-символ имперского величия.", points: [{name: "Haut-Koenigsbourg", details: "Панорама Рейна."}], gastronomy: [{type: "Оберне", name: "Le Bistro", desc: "Местная кухня."}], shopping: "Текстиль.", tips: "Смотрите на флюгеры." },
@@ -156,11 +156,17 @@
             { id: 9, imgNum: 8, date: "28 марта", title: "Мон-Сент-Одиль", history: "Языческая стена и монастырь.", points: [{name: "Mur Païen", details: "300 000 блоков."}], gastronomy: [{type: "Илльхойзерн", name: "Auberge de l'Ill", desc: "Легенда."}], shopping: "Мед.", tips: "Свой источник." },
             { 
                 id: 10, imgNum: 1, date: "29 марта", title: "Эпфиг — Штутгарт", 
-                history: "Заключительный день. Прощание с уютным Эпфигом. Пора собрать впечатления и гостинцы перед дорогой домой.", 
-                points: [{name: "Chapelle Sainte-Marguerite", details: "Утренняя прогулка к часовне в тишине эльзасских виноградников."}], 
-                gastronomy: [{type: "Завтрак", name: "Boulangerie Local", desc: "Свежая выпечка и ароматный кофе."}], 
-                shopping: "Сыр Мюнстер, эльзасский джем и пара бутылок Рислинга.", 
-                tips: "Дорога до Штутгарта займет чуть меньше двух часов." 
+                history: "Прощание с Эльзасом. Возвращение в Германию через живописный Шварцвальд с остановкой в сказочном Генгенбахе.", 
+                points: [
+                    {name: "Gengenbach Altstadt", details: "Средневековые ворота и ратуша, одна из красивейших в Германии."},
+                    {name: "Engelgasse", details: "Улочка с открытки: фахверк и каменная мостовая."}
+                ], 
+                gastronomy: [
+                    {type: "Обед", name: "Reichsstadt Gengenbach", desc: "Ресторан в старинном здании. Местная дичь или шпецле."},
+                    {type: "Десерт", name: "Café Altstadt", desc: "Уютное место для финального кофе."}
+                ], 
+                shopping: "Черный лес (Schwarzwald) в бутылке: вишневая вода.", 
+                tips: "От Генгенбаха до Штутгарта около 80 минут пути. Счастливого возвращения!" 
             }
         ];
 
@@ -174,9 +180,9 @@
                 div.onclick = () => { currentDayId = day.id; renderDayList(); renderDayDetail(); };
                 div.innerHTML = `
                     <div class="flex justify-between items-center">
-                        <div>
+                        <div class="max-w-[85%]">
                             <span class="text-[10px] block opacity-70 uppercase tracking-tighter">${day.date}</span>
-                            <span class="text-xl nouveau-font">${day.title}</span>
+                            <span class="text-lg leading-tight nouveau-font">${day.title}</span>
                         </div>
                         <span class="text-2xl opacity-30">${isActive ? '❧' : '❦'}</span>
                     </div>
@@ -195,7 +201,7 @@
                 <div class="animate-fadeIn">
                     <div class="text-center mb-10">
                         <span class="text-art-gold text-sm tracking-[0.3em] uppercase">Глава ${day.id}</span>
-                        <h2 class="text-5xl md:text-6xl text-art-wine my-4">${day.title}</h2>
+                        <h2 class="text-4xl md:text-5xl text-art-wine my-4 leading-tight">${day.title}</h2>
                         <div class="ornament">❧ ——— ❦ ——— ❧</div>
                     </div>
                     <div class="art-nouveau-frame mb-12">
