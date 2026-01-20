@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эльзас и Лотарингия: Полный Путеводитель</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display & Noto Sans (Italic versions) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&family=Noto+Sans:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        art: {
+                            sage: '#7B8E7E',
+                            gold: '#C5A059',
+                            wine: '#8B4343',
+                            cream: '#F9F4E8',
+                            dark: '#2D3436'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Noto Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-style: italic !important;
+        }
+        
+        body {
+            background-color: #F9F4E8;
+            color: #2D3436;
+            background-image: radial-gradient(#C5A059 0.4px, transparent 0.4px);
+            background-size: 30px 30px;
+        }
+
+        .nouveau-border {
+            position: relative;
+            border: 2px solid #C5A059;
+            border-radius: 40px 5px 40px 5px;
+        }
+
+        .nouveau-header {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-item {
+            transition: all 0.3s ease;
+            border-radius: 0 50px 50px 0;
+            margin-right: 10px;
+        }
+
+        .active-day {
+            background: linear-gradient(90deg, #8B4343 0%, #C5A059 100%);
+            color: white !important;
+            padding-left: 1.5rem;
+            box-shadow: 4px 4px 10px rgba(139, 67, 67, 0.15);
+        }
+
+        .day-scroller::-webkit-scrollbar { width: 3px; }
+        .day-scroller::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 10px; }
+
+        .detail-card {
+            background: white;
+            border-left: 1px solid #C5A059;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Image Generation Styles */
+        .art-nouveau-frame {
+            position: relative;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #C5A059;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .art-nouveau-frame::before {
+            content: "❦";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #F9F4E8;
+            padding: 0 10px;
+            color: #C5A059;
+            font-size: 1.5rem;
+        }
+
+        .img-container {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #eee;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .img-placeholder-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30c0-10 10-20 20-20s10 10 0 20-20 10-20 10-10-10-20-10-10-10 0-20 20 10 20 20z' fill='%23C5A059' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(249, 244, 232, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #C5A05933;
+            border-top: 3px solid #8B4343;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .btn-visualize {
+            background: #8B4343;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .btn-visualize:hover {
+            background: #C5A059;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen font-sans">
+
+    <header class="bg-art-dark text-art-cream py-12 border-b-4 border-art-gold shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="nouveau-header text-5xl md:text-6xl mb-3">Эльзас и Лотарингия</h1>
+            <div class="flex items-center justify-center gap-4 text-art-gold mb-4">
+                <span class="text-3xl">❦</span>
+                <p class="uppercase tracking-[0.4em] text-sm font-light">Культурная Экспедиция 2026</p>
+                <span class="text-3xl">❦</span>
+            </div>
+            <div class="inline-block border border-art-gold/40 px-8 py-2 rounded-full text-sm italic">
+                Базирование: Эпфиг • Сердце винной дороги
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <aside class="lg:col-span-3">
+            <div class="bg-white/90 backdrop-blur-md p-6 nouveau-border sticky top-8 flex flex-col max-h-[85vh]">
+                <h2 class="nouveau-header text-2xl text-art-wine mb-6 text-center border-b border-art-gold/20 pb-4">Маршрут</h2>
+                <div class="day-scroller overflow-y-auto space-y-2 pr-2" id="day-list"></div>
+            </div>
+        </aside>
+
+        <section class="lg:col-span-9">
+            <div id="day-detail-view" class="bg-white/80 p-8 md:p-12 nouveau-border shadow-xl min-h-screen transition-all duration-700"></div>
+        </section>
+    </main>
+
+    <footer class="bg-art-dark text-art-cream py-20 border-t-8 border-art-gold mt-16 text-center">
+        <div class="container mx-auto px-4 italic opacity-80 leading-loose">
+            «В Арт-Нуво природа не просто копируется, она переосмысляется через линию...»
+        </div>
+    </footer>
+
+    <script>
+        const apiKey = ""; 
+        const generatedImages = {}; 
+        let currentDayId = 1;
+
+        const itineraryData = [
+            {
+                id: 1, 
+                date: "20 марта", 
+                title: "Начало Эльзаса: Эпфиг",
+                summary: "Городок, где камни помнят римлян, а воздух пропитан ароматом виноградников.", // ИЗМЕНЕНО: "Городок" вместо "Тихий старт в коммуне"
+                imagePrompt: "Art Nouveau illustration of a cozy Alsatian village Epfig with vineyards, rolling hills, morning mist, in the style of Alphonse Mucha and Emile Galle, pastel colors, organic curves.",
+                points: [
+                    { name: "Эпфиг (Epfig)", details: "Ваша база. Живая винодельческая деревня с гербами виноделов над воротами." },
+                    { name: "Часовня Сен-Маргарит (XI век)", details: "Шедевр романского стиля. Окруженная старым кладбищем, поражает чистотой линий." }
+                ],
+                tips: "Зайдите в местную булочную за свежим багетом к вечернему вину."
+            },
+            {
+                id: 2, 
+                date: "21 марта", 
+                title: "Страсбург: Имперский масштаб", 
+                summary: "Столица, где французский шарм встречается с немецкой монументальностью.",
+                imagePrompt: "Strasbourg Cathedral and Petite France canals in Art Nouveau style, intricate stained glass effects, flowing water, wood-framed houses, warm lighting, gold and crimson accents.",
+                points: [
+                    { name: "Страсбургский собор (Notre-Dame)", details: "Розовый песчаник, астрономические часы и готическое кружево." },
+                    { name: "Квартал 'Маленькая Франция'", details: "Дома кожевников, нависающие над каналами." }
+                ],
+                tips: "Используйте P+R Elsau для удобной парковки."
+            },
+            {
+                id: 3, 
+                date: "22 марта", 
+                title: "Вертикаль истории: Замки", 
+                summary: "Путешествие в горы к рыцарским цитаделям.",
+                imagePrompt: "Medieval Haut-Koenigsbourg castle on a mountain top, fog, dark green forests, Art Nouveau border with organic ivy patterns, dramatic sky, mythical atmosphere.",
+                points: [
+                    { name: "Верхний Кенигсбург", details: "Воссозданная по приказу Кайзера крепость. Подъемные мосты и оружейные залы." },
+                    { name: "Оберне (Obernai)", details: "Город святой Одилии с колодцем 'Шести ведер' в стиле Ренессанса." }
+                ],
+                tips: "В замке всегда холоднее. Оденьтесь теплее."
+            },
+            {
+                id: 4, 
+                date: "23 марта", 
+                title: "Нанси: Столица Арт-Нуво", 
+                summary: "Погружение в эпоху 'Школы Нанси' — сердце французского модерна.",
+                imagePrompt: "Place Stanislas Nancy with golden wrought iron gates, Art Nouveau floral ornaments, Nancy School furniture style, dragonfly motifs, amber glass, elegant aesthetics.",
+                points: [
+                    { name: "Площадь Станислава", details: "Золоченые кованые решетки работы Жана Ламура." },
+                    { name: "Музей Школы Нанси", details: "Мир Эмиля Галле и Луи Мажореля. Природа в стекле и дереве." }
+                ],
+                tips: "Попробуйте 'Бергамоты Нанси' — прозрачные конфеты."
+            },
+            {
+                id: 5, 
+                date: "24 марта", 
+                title: "Кольмар: Город-открытка", 
+                summary: "Эстетическое наслаждение среди каналов и самой красивой деревни Франции.",
+                imagePrompt: "Colmar Little Venice and Eguisheim spiral streets, colorful timber-framed houses, spring flowers, Art Nouveau poster style, soft sunrise light, delicate linework.",
+                points: [
+                    { name: "Маленькая Венеция", details: "Лодки плавно скользят мимо пастельных фасадов." },
+                    { name: "Эгисхайм (Eguisheim)", details: "Деревня-спираль, где каждый дом — шедевр декора." }
+                ],
+                tips: "Загляните на крытый рынок за свежим сыром."
+            },
+            {
+                id: 6, 
+                date: "25 марта", 
+                title: "Мец: Свет и Солнечный Камень", 
+                summary: "Город из золотистого камня и свет витражей Марка Шагала.",
+                imagePrompt: "Metz Cathedral with Marc Chagall stained glass windows, glowing yellow stone architecture, Art Nouveau stained glass patterns, mystic light, Pompidou Metz futuristic roof, gold and azure.",
+                points: [
+                    { name: "Собор Сент-Этьен", details: "Витражи Шагала, наполняющие пространство мистическим светом." },
+                    { name: "Центр Помпиду-Мец", details: "Современное искусство под крышей-шляпой." }
+                ],
+                tips: "Мец — родина пирога Киш Лорен. Попробуйте оригинал."
+            }
+        ];
+
+        async function generateImage(dayId) {
+            const day = itineraryData.find(d => d.id === dayId);
+            const container = document.getElementById(`img-wrap-${dayId}`);
+            if (!container) return;
+            
+            const loader = document.createElement('div');
+            loader.className = 'loading-overlay';
+            loader.innerHTML = '<div class="spinner"></div><p class="mt-4 text-art-wine text-xs uppercase tracking-widest">Создаем шедевр модерна...</p>';
+            container.appendChild(loader);
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        instances: [{ prompt: day.imagePrompt }],
+                        parameters: { sampleCount: 1 }
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.predictions && result.predictions[0] && result.predictions[0].bytesBase64Encoded) {
+                    const imgUrl = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
+                    generatedImages[dayId] = imgUrl;
+                    updateImageView(dayId, imgUrl);
+                } else {
+                    throw new Error("Неверный формат ответа от сервера");
+                }
+            } catch (error) {
+                console.error("Generation failed:", error);
+                const overlay = container.querySelector('.loading-overlay');
+                if (overlay) {
+                    overlay.innerHTML = '<p class="text-art-wine text-xs p-4 text-center">Извините, магия Арт-Нуво временно недоступна. Попробуйте позже.</p>';
+                    setTimeout(() => overlay.remove(), 3000);
+                }
+            }
+        }
+
+        function updateImageView(dayId, url) {
+            const container = document.getElementById(`img-wrap-${dayId}`);
+            if (container) {
+                container.innerHTML = `<img src="${url}" class="w-full h-full object-cover animate-fadeIn" alt="Art Nouveau interpretation">`;
+            }
+        }
+
+        function selectDay(id) {
+            currentDayId = id;
+            renderDayList();
+            renderDayDetail(id);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderDayList() {
+            const list = document.getElementById('day-list');
+            if (!list) return;
+            list.innerHTML = '';
+            itineraryData.forEach(day => {
+                const isActive = day.id === currentDayId;
+                const div = document.createElement('div');
+                div.className = `nav-item p-4 cursor-pointer text-sm transition-all ${isActive ? 'active-day' : 'hover:bg-art-gold/10'}`;
+                div.onclick = () => selectDay(day.id);
+                div.innerHTML = `<span class="block text-[10px] uppercase opacity-60">${day.date}</span><span class="nouveau-header font-bold block">${day.title}</span>`;
+                list.appendChild(div);
+            });
+        }
+
+        function renderDayDetail(id) {
+            const day = itineraryData.find(d => d.id === id);
+            const view = document.getElementById('day-detail-view');
+            if (!day || !view) return;
+            
+            const pointsHtml = day.points.map(p => `
+                <div class="detail-card">
+                    <h3 class="nouveau-header text-2xl text-art-wine italic mb-2">❦ ${p.name}</h3>
+                    <p class="text-art-dark leading-relaxed italic">${p.details}</p>
+                </div>
+            `).join('');
+
+            const imgContent = generatedImages[id] 
+                ? `<img src="${generatedImages[id]}" class="w-full h-full object-cover" alt="Art Nouveau">` 
+                : `<div class="text-center p-8"><p class="text-art-gold opacity-50 text-xs uppercase mb-4">Нажмите кнопку ниже, чтобы визуализировать этот день</p><button class="btn-visualize" onclick="generateImage(${id})">Визуализировать</button></div>`;
+
+            view.innerHTML = `
+                <div class="animate-fadeIn">
+                    <div class="mb-10 border-b-2 border-art-gold/20 pb-6">
+                        <span class="text-art-gold text-sm uppercase tracking-[0.3em] font-bold">День ${day.id} • ${day.date}</span>
+                        <h2 class="nouveau-header text-5xl text-art-dark mt-2 mb-4 italic">${day.title}</h2>
+                        <p class="text-lg text-gray-500 italic">« ${day.summary} »</p>
+                    </div>
+
+                    <div class="art-nouveau-frame">
+                        <div id="img-wrap-${id}" class="img-container img-placeholder-pattern">
+                            ${imgContent}
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-10">${pointsHtml}</div>
+
+                    <div class="mt-12 bg-art-sage/5 p-6 rounded-3xl border border-art-gold/20 italic">
+                        <h4 class="nouveau-header text-art-wine text-lg mb-2">Совет:</h4>
+                        <p class="text-art-dark">❧ ${day.tips}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.onload = () => {
+            renderDayList();
+            renderDayDetail(currentDayId);
+        };
+    </script>
+
+    <style>
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fadeIn { animation: fadeIn 1s ease-out; }
+    </style>
+</body>
+</html>
