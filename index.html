@@ -98,7 +98,7 @@
             <svg width="100%" height="100%"><pattern id="pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M0 50 Q 25 0 50 50 T 100 50" fill="none" stroke="#C5A059" stroke-width="2"/></pattern><rect width="100%" height="100%" fill="url(#pattern)"/></svg>
         </div>
         <h1 class="text-5xl md:text-6xl mb-2">Эльзас & Лотарингия</h1>
-        <p class="uppercase tracking-[0.4em] text-sm text-art-gold">Историческая экспедиция • 20–28 Марта 2026</p>
+        <p class="uppercase tracking-[0.4em] text-sm text-art-gold">Историческая экспедиция • 20–29 Марта 2026</p>
     </header>
 
     <main class="flex-grow container mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -120,137 +120,141 @@
     </footer>
 
     <script>
-        /**
-         * НАСТРОЙКИ GITHUB
-         */
         const GITHUB_USER = "bmai42195"; 
         const GITHUB_REPO = "Alsace-Lorraine"; 
         const GITHUB_BRANCH = "main"; 
-        
-        // Базовый путь к папке images в вашем репозитории
         const GITHUB_BASE_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/images/`;
 
         let currentDayId = 1;
 
         const itineraryData = [
             { 
-                id: 1, date: "20 марта", title: "Эпфиг", 
-                summary: "Корни Эльзаса: от римских вилл до аббатств.", 
-                history: "Деревня Эпфиг стоит на древнеримской дороге. В XI веке она была важным религиозным пунктом. Часовня Сен-Маргарит — это не просто здание, а памятник эпохи, когда христианство в этих краях только укреплялось, вбирая в себя кельтские символы.",
-                points: [{name: "Chapelle Sainte-Marguerite", details: "Внимательно посмотрите на капители колонн: там можно найти загадочные головы и животных, характерных для раннего романского искусства."}], 
+                id: 1, imgNum: 1, date: "20 марта", title: "Эпфиг", 
+                history: "Деревня Эпфиг стоит на древнеримской дороге. Часовня Сен-Маргарит — шедевр романской архитектуры XI века.",
+                points: [{name: "Chapelle Sainte-Marguerite", details: "Внимательно посмотрите на капители колонн: там можно найти загадочные головы и животных."}], 
                 gastronomy: [{type: "Винстуб", name: "Au Gourmand", desc: "Ужин в традициях старого Эльзаса."}], 
-                shopping: "Фермерские рынки — сыр Мюнстер, технология производства которого не менялась со времен монахов VII века.",
+                shopping: "Фермерские рынки — сыр Мюнстер.",
                 tips: "Прогуляйтесь к Fronholz — здесь находили следы галло-римских поселений." 
             },
             { 
-                id: 2, date: "21 марта", title: "Страсбург", 
-                summary: "Вольный имперский город и столица гуманизма.", 
-                history: "В Средние века Страсбург был богатейшим вольным городом Священной Римской империи. Именно здесь Иоганн Гутенберг изобрел печатный пресс, а в 1792 году впервые прозвучала «Марсельеза». Собор был самым высоким зданием мира на протяжении 227 лет.",
+                id: 2, imgNum: 2, date: "21 марта", title: "Страсбург", 
+                history: "Страсбург был богатейшим вольным городом Священной Римской империи. Собор был самым высоким зданием мира 227 лет.",
                 points: [
-                    {name: "Cathédrale Notre-Dame", details: "Рассмотрите шпиль — в 1794 году революционеры хотели снести его как символ 'неравенства', но жители надели на него гигантский красный фригийский колпак из жести, чтобы спасти памятник."},
-                    {name: "Petite France", details: "Этот район был домом не только для мельников, но и для больных сифилисом (так называемой 'французской болезнью') в XVI веке, отсюда и ироничное название."}
+                    {name: "Cathédrale Notre-Dame", details: "Рассмотрите шпиль — в 1794 году его спасли от сноса, надев гигантский фригийский колпак."},
+                    {name: "Petite France", details: "Район кожевников и мельников с XVI века."}
                 ], 
-                gastronomy: [{type: "Обед", name: "Maison Kammerzell", desc: "Дом построен в 1427 году. Внутри сохранились фрески XVI века."}], 
-                shopping: "Rue des Orfèvres (Улица Ювелиров) — сердце торгового Страсбурга со времен гильдий.",
-                tips: "Астрономические часы — чудо инженерии XVI века, предсказывающее церковные праздники на десятилетия вперед." 
+                gastronomy: [{type: "Обед", name: "Maison Kammerzell", desc: "Дом построен в 1427 году."}], 
+                shopping: "Rue des Orfèvres — сердце торговли со времен гильдий.",
+                tips: "Астрономические часы — шоу в 12:30." 
             },
             { 
-                id: 3, date: "22 марта", title: "Верхний Кенигсбург", 
-                summary: "Символ имперских амбиций и рыцарской чести.", 
-                history: "Замок был сожжен шведами во время Тридцатилетней войны и лежал в руинах 250 лет. В начале XX века кайзер Вильгельм II восстановил его, чтобы доказать германские корни Эльзаса. Это уникальный пример того, как в 1908 году представляли идеальный замок XV века.",
+                id: 3, imgNum: 3, date: "22 марта", title: "Верхний Кенигсбург", 
+                history: "Замок на горе, восстановленный кайзером Вильгельмом II в 1908 году как символ имперского величия.",
                 points: [
-                    {name: "Haut-Koenigsbourg", details: "Найдите на потолке обеденного зала герб кайзера — политическое послание того времени."},
-                    {name: "Sélestat", details: "Здесь хранится первая запись о рождественской елке (1521 год) в истории!"}
+                    {name: "Haut-Koenigsbourg", details: "Оцените систему обороны и панорамный вид на долину Рейна."},
+                    {name: "Sélestat", details: "Здесь хранится первая запись о рождественской елке (1521 год)."}
                 ], 
-                gastronomy: [{type: "Оберне", name: "Le Bistro des Saveurs", desc: "Расположен в городе, который был любимым местом охоты меровингских королей."}], 
-                shopping: "Эльзасский текстиль в Оберне — наследие ткацких мануфактур XVIII века.",
-                tips: "Внимательно смотрите на флюгеры замка — они воссозданы по чертежам эпохи Максимилиана I." 
+                gastronomy: [{type: "Оберне", name: "Le Bistro des Saveurs", desc: "Кухня с историческим колоритом."}], 
+                shopping: "Эльзасский текстиль.",
+                tips: "Внимательно смотрите на флюгеры замка — они воссозданы по чертежам эпохи." 
             },
             { 
-                id: 4, date: "23 марта", title: "Нанси", 
-                summary: "Последний приют польского короля и колыбель Модерна.", 
-                history: "Станислав Лещинский, тесть Людовика XV и бывший король Польши, получил Лотарингию в пожизненное владение. Он превратил Нанси в одну из самых стильных столиц Европы. Позже, в 1900-х, город стал центром школы Арт-нуво (Школа Нанси), противостоявшей индустриальной серости.",
+                id: 4, imgNum: 4, date: "23 марта", title: "Нанси", 
+                history: "Столица польского короля Станислава и колыбель стиля Арт-нуво в начале XX века.",
                 points: [
-                    {name: "Place Stanislas", details: "Решетки Жана Ламура не просто украшение — это символ союза Франции и Лотарингии."},
-                    {name: "Musée de l'École de Nancy", details: "Здесь представлены работы Галле, который использовал научные знания о растениях для создания своих ваз."}
+                    {name: "Place Stanislas", details: "Объект ЮНЕСКО с золочеными решетками Жана Ламура."},
+                    {name: "Musée de l'École de Nancy", details: "Музей в бывшем доме коллекционера Корбена."}
                 ], 
-                gastronomy: [{type: "Брассери", name: "Excelsior", desc: "Интерьер 1911 года — вершина стиля Арт-нуво в архитектуре ресторанов."}], 
-                shopping: "Макароны Нанси — рецепт 1793 года, созданный монахинями, спасавшимися от Революции.",
-                tips: "Найдите 'чертополох' на зданиях — это символ Лотарингии ('кто уколет, тот пожалеет')." 
+                gastronomy: [{type: "Брассери", name: "Excelsior", desc: "Интерьер 1911 года — вершина стиля Арт-нуво."}], 
+                shopping: "Бергамоты Нанси и печенье макарон.",
+                tips: "Ищите символ чертополоха на зданиях." 
             },
             { 
-                id: 5, date: "24 марта", title: "Кольмар", 
-                summary: "Убежище для искусства и колыбель Статуи Свободы.", 
-                history: "Кольмар чудом избежал разрушений во всех войнах. Именно здесь родился Фредерик Бартольди, создатель Статуи Свободы. А Изенгеймский алтарь в музее Унтерлинден считается 'Мона Лизой' северного Возрождения — его создали для лечения больных антоновым огнем (отравление спорыньей).",
+                id: 5, imgNum: 5, date: "24 марта", title: "Кольмар", 
+                history: "Город, где время остановилось. Родина Бартольди, создателя Статуи Свободы.",
                 points: [
-                    {name: "La Petite Venise", details: "Раньше по этим каналам возили овощи огородники из пригородов прямо к рынку."},
-                    {name: "Eguisheim", details: "Место рождения Папы Льва IX. Архитектура деревни напоминает раковину улитки."}
+                    {name: "La Petite Venise", details: "Живописные каналы в квартале Крютно."},
+                    {name: "Eguisheim", details: "Крошечная деревня, построенная по кругу."}
                 ], 
-                gastronomy: [{type: "Винстуб", name: "Le Fer Rouge", desc: "Название напоминает о кузнецах, работавших в этом квартале в Средневековье."}], 
-                shopping: "Антиквариат Кольмара — часто можно найти подлинные предметы быта XIX века.",
-                tips: "Найдите дом Пфистера (1537 г.) — первый пример архитектуры Ренессанса в городе." 
+                gastronomy: [{type: "Винстуб", name: "Le Fer Rouge", desc: "Исторический ресторан в центре."}], 
+                shopping: "Местное вино Рислинг.",
+                tips: "Посетите музей Унтерлинден ради Изенгеймского алтаря." 
             },
             { 
-                id: 6, date: "25 марта", title: "Мец", 
-                summary: "Город, помнящий Карла Великого.", 
-                history: "Мец был столицей королевства Австразия и колыбелью династии Каролингов. Собор Сент-Этьен строился 300 лет. В 1871 году город стал мощной немецкой крепостью, что отразилось в грандиозном Квартале Империал, построенном для устрашения величием Германии.",
+                id: 6, imgNum: 10, date: "25 марта", title: "Вогезы", 
+                history: "Синие горы, вдохновлявшие художников текучими формами своих склонов и туманными озерами.",
                 points: [
-                    {name: "Cathédrale Saint-Étienne", details: "Посмотрите на витражи Шагала — они изображают сцены из Ветхого Завета в уникальной сине-желтой гамме."},
-                    {name: "Gare de Metz", details: "Вокзал был построен для быстрой переброски войск кайзера, поэтому в нем есть личные покои императора."}
+                    {name: "Lac de Gérardmer", details: "Ледниковое озеро, жемчужина горного массива."},
+                    {name: "Hohneck", details: "Вершина с видом на долину и, иногда, Альпы."}
                 ], 
-                gastronomy: [{type: "Рынок", name: "Marché Couvert", desc: "Расположен в бывшем епископском дворце, строительство которого прервала Революция."}], 
-                shopping: "Мирабелевый ликер — символ Лотарингии, плод, завезенный сюда из Крестовых походов.",
-                tips: "Прогуляйтесь по набережной Мозеля — здесь сохранились укрепления римских времен." 
+                gastronomy: [{type: "Горная ферма", name: "Marcairie", desc: "Традиционный обед пастухов."}], 
+                shopping: "Деревянные сувениры и черничное варенье.",
+                tips: "Одевайтесь многослойно, погода в горах переменчива." 
             },
             { 
-                id: 7, date: "26 марта", title: "Риквир & Рибовилле", 
-                summary: "Виноградники, пережившие века.", 
-                history: "Риквир разбогател в XVI веке на торговле вином с Голландией и Англией. Город был настолько богат, что смог откупиться от разрушений во время Тридцатилетней войны. Рибовилле же был резиденцией лордов Рибопьер, покровителей всех бродячих музыкантов региона.",
+                id: 7, imgNum: 6, date: "26 марта", title: "Мец", 
+                history: "Город из желтого 'камня Жомон', столица Австразии при Каролингах.",
                 points: [
-                    {name: "Dolder", details: "Верхние ворота XIII века. Внутри — музей с колодцем, который спасал город во время осад."},
-                    {name: "Ribeauvillé Castles", details: "Три замка на холме были сигнальной системой: огни на башнях предупреждали о приближении врага."}
+                    {name: "Cathédrale Saint-Étienne", details: "Витражи Марка Шагала."},
+                    {name: "Quartier Impérial", details: "Немецкая архитектура начала XX века."}
                 ], 
-                gastronomy: [{type: "Дегустация", name: "Maison Hugel", desc: "Семья производит вино в этом здании с 1639 года!"}], 
-                shopping: "Керамика в стиле 'Рибовилле' — яркие растительные мотивы.",
-                tips: "Найдите 'дом вора' (Maison du Voleur) в Риквире — там сохранилась камера пыток XVI века." 
+                gastronomy: [{type: "Рынок", name: "Marché Couvert", desc: "Местные продукты и закуски."}], 
+                shopping: "Мирабелевый ликер.",
+                tips: "Прогуляйтесь у стен храма Тампльеров." 
             },
             { 
-                id: 8, date: "27 марта", title: "Мон-Сент-Одиль", 
-                summary: "Святилище кельтов и пристанище святой.", 
-                history: "Задолго до христианства здесь было кельтское святилище. Одилия, слепая дочь герцога, согласно легенде, прозрела после крещения и основала монастырь в VII веке. Языческая стена (Mur Païen) — это 300 000 каменных блоков, соединенных без раствора, тайна происхождения которых не разгадана до сих пор.",
+                id: 8, imgNum: 7, date: "27 марта", title: "Риквир & Рибовилле", 
+                history: "Деревни-крепости, сохранившие облик процветающего Эльзаса XVI столетия.",
                 points: [
-                    {name: "Sainte-Odile", details: "Рассмотрите мозаики в часовне — они рассказывают о жизни святой в византийском стиле."},
-                    {name: "Mur Païen", details: "Возраст стены оценивают примерно в 3000 лет. Это крупнейший мегалитический памятник Европы."}
+                    {name: "Dolder", details: "Сторожевая башня-ворота XIII века."},
+                    {name: "Ribeauvillé", details: "Прогулка к руинам трех замков."}
                 ], 
-                gastronomy: [{type: "Мишлен", name: "L'Auberge de l'Ill", desc: "Легендарное место, хранившее 3 звезды Мишлен рекордные 50 лет."}], 
-                shopping: "В монастыре продают 'Слезы Одилии' — особые четки и травяные сборы.",
-                tips: "У источника Св. Одилии прохладно даже летом — это самая высокая точка вашего маршрута." 
+                gastronomy: [{type: "Дегустация", name: "Maison Hugel", desc: "Семейное виноделие с 1639 года."}], 
+                shopping: "Керамика и пасхальный декор.",
+                tips: "В Риквире зайдите во дворцы виноделов." 
             },
             { 
-                id: 9, date: "28 марта", title: "Финал", 
-                summary: "Завершение круга времени.", 
-                history: "Деревня Суффленхайм получила право бесплатно добывать глину в лесу Агено еще от императора Фридриха Барбароссы в XII веке. С тех пор это главный центр гончарного искусства, сохранивший формы и узоры эпохи Священной Римской империи.",
-                points: [{name: "Soufflenheim", details: "В некоторых мастерских до сих пор используют печи, которым более 100 лет."}], 
-                gastronomy: [{type: "Традиция", name: "Kugelhopf", desc: "Этот кекс в форме тюрбана — символ эльзасского гостеприимства."}], 
-                shopping: "Формы для запекания — настоящий эльзасский предмет культа.",
-                tips: "Перед выездом зайдите в местную церковь — там часто выставлены работы современных гончаров." 
+                id: 9, imgNum: 8, date: "28 марта", title: "Мон-Сент-Одиль", 
+                history: "Святое место на высоте 764 метра. Кельтская Языческая стена окружает гору на 10 км.",
+                points: [
+                    {name: "Монастырь", details: "Гробница святой Одилии и панорамная терраса."},
+                    {name: "Mur Païen", details: "Мегалитическое сооружение из 300 000 блоков."}
+                ], 
+                gastronomy: [{type: "Обед", name: "L'Auberge de l'Ill", desc: "Легенда региона в Илльхойзерне."}], 
+                shopping: "Травяные сборы и мед.",
+                tips: "Наберите воды из святого источника." 
+            },
+            { 
+                id: 10, imgNum: 9, date: "29 марта", title: "Финал", 
+                history: "Завершение пути в Суффленхайме — городе, где глина превращается в искусство с XII века.",
+                points: [{name: "Мастерские гончаров", details: "Процесс создания знаменитых форм для Бэкеоффе."}], 
+                gastronomy: [{type: "Традиция", name: "Kugelhopf", desc: "Кекс, испеченный в местной форме."}], 
+                shopping: "Глиняная посуда ручной работы.",
+                tips: "Выбирайте формы с традиционным цветочным узором." 
             }
         ];
 
         function renderDayList() {
             const list = document.getElementById('day-list');
             list.innerHTML = '';
-            itineraryData.forEach(day => {
+            itineraryData.forEach((day, index) => {
                 const div = document.createElement('div');
-                div.className = `p-5 cursor-pointer transition-all duration-500 border-b border-art-gold/20 ${day.id === currentDayId ? 'active-day scale-105' : 'bg-transparent text-art-dark hover:text-art-wine'}`;
-                div.onclick = () => { currentDayId = day.id; renderDayList(); renderDayDetail(); };
+                const isActive = day.id === currentDayId;
+                div.className = `p-5 cursor-pointer transition-all duration-300 border-b border-art-gold/20 ${isActive ? 'active-day scale-105' : 'bg-transparent text-art-dark hover:text-art-wine'}`;
+                
+                div.onclick = () => { 
+                    currentDayId = day.id; 
+                    renderDayList(); 
+                    renderDayDetail(); 
+                };
+
                 div.innerHTML = `
                     <div class="flex justify-between items-center">
                         <div>
                             <span class="text-[10px] block opacity-70 uppercase tracking-tighter">${day.date}</span>
                             <span class="text-xl nouveau-font">${day.title}</span>
                         </div>
-                        <span class="text-2xl opacity-30">❦</span>
+                        <span class="text-2xl opacity-30">${isActive ? '❧' : '❦'}</span>
                     </div>
                 `;
                 list.appendChild(div);
@@ -259,15 +263,16 @@
 
         function renderDayDetail() {
             const day = itineraryData.find(d => d.id === currentDayId);
+            if (!day) return;
+
             const view = document.getElementById('day-detail-view');
-            
-            // Формируем прямую ссылку на RAW изображение в GitHub
-            const imageSrc = `${GITHUB_BASE_URL}${day.id}.jpg`;
+            // Используем imgNum для ссылки на файл
+            const imageSrc = `${GITHUB_BASE_URL}${day.imgNum}.jpg`;
 
             view.innerHTML = `
                 <div class="animate-fadeIn">
                     <div class="text-center mb-10">
-                        <span class="text-art-gold text-sm tracking-[0.3em] uppercase">Глава ${day.id}</span>
+                        <span class="text-art-gold text-sm tracking-[0.3em] uppercase">Глава ${currentDayId}</span>
                         <h2 class="text-5xl md:text-6xl text-art-wine my-4">${day.title}</h2>
                         <div class="ornament">❧ ——— ❦ ——— ❧</div>
                     </div>
@@ -280,8 +285,8 @@
                                  alt="${day.title}">
                             <div class="hidden flex-col items-center justify-center p-10 text-art-gold text-center">
                                 <span class="text-4xl mb-2">❦</span>
-                                <p class="text-sm italic">Изображение ${day.id}.jpg не найдено.<br>Убедитесь, что файлы загружены в папку 'images' в ветке '${GITHUB_BRANCH}'.</p>
-                                <p class="text-xs mt-2 opacity-50 text-wrap break-all">${imageSrc}</p>
+                                <p class="text-sm italic">Изображение <strong>${day.imgNum}.jpg</strong> не найдено.</p>
+                                <p class="text-xs mt-2 opacity-50 break-all">${imageSrc}</p>
                             </div>
                         </div>
                     </div>
@@ -289,7 +294,7 @@
                     <div class="grid md:grid-cols-2 gap-12">
                         <div class="space-y-10">
                             <section>
-                                <h4 class="text-3xl text-art-dark border-b-2 border-art-gold/30 pb-2 mb-4">Историческая справка</h4>
+                                <h4 class="text-3xl text-art-dark border-b-2 border-art-gold/30 pb-2 mb-4">Хроника</h4>
                                 <p class="text-art-dark/90 leading-relaxed italic text-lg border-l-4 border-art-gold pl-4 bg-art-gold/5 py-4">
                                     ${day.history}
                                 </p>
@@ -308,7 +313,7 @@
 
                         <div class="space-y-10">
                             <div class="bg-white p-8 rounded-lg border-2 border-art-gold/20 shadow-inner">
-                                <h4 class="text-3xl text-art-dark mb-6">Вкусы Прошлого</h4>
+                                <h4 class="text-3xl text-art-dark mb-6">Гастрономия</h4>
                                 ${day.gastronomy.map(g => `
                                     <div class="mb-6 last:mb-0">
                                         <span class="text-[10px] font-bold text-art-gold uppercase tracking-widest block mb-1">${g.type}</span>
@@ -329,6 +334,8 @@
                     </div>
                 </div>
             `;
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         window.onload = () => {
@@ -336,9 +343,5 @@
             renderDayDetail();
         };
     </script>
-    <style>
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
-    </style>
 </body>
 </html>
