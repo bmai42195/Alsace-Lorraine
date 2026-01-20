@@ -123,10 +123,11 @@
     </footer>
 
     <script>
+        // Использование JSDelivr CDN для лучшей совместимости с Android/iOS
         const GITHUB_USER = "bmai42195"; 
         const GITHUB_REPO = "Alsace-Lorraine"; 
         const GITHUB_BRANCH = "main"; 
-        const GITHUB_BASE_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/images/`;
+        const GITHUB_BASE_URL = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}@${GITHUB_BRANCH}/images/`;
 
         let currentDayId = 1;
 
@@ -264,7 +265,7 @@
                     {type: "Пикник", name: "Le Kiosque", desc: "Простая еда и выпечка для прогулки по лесу."}
                 ], 
                 shopping: "Мед, монастырское печенье, иконы и четки.", 
-                tips: "Прогулка вдоль Языческой стены требует удобной обуви." 
+                tips: "Прогулка вдоль Языческой стены требует удобной обови." 
             },
             { 
                 id: 10, imgNum: 11, date: "29 марта", title: "Эпфиг – Генгенбах – Штутгарт", 
@@ -308,6 +309,7 @@
             const day = itineraryData.find(d => d.id === currentDayId);
             if (!day) return;
             const view = document.getElementById('day-detail-view');
+            // Используем прямой URL с кросс-доменной поддержкой
             const imageSrc = `${GITHUB_BASE_URL}${day.imgNum}.jpg`;
 
             view.innerHTML = `
@@ -319,10 +321,15 @@
                     </div>
                     <div class="art-nouveau-frame mb-12">
                         <div class="img-container">
-                            <img src="${imageSrc}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover" alt="${day.title}">
+                            <img src="${imageSrc}" 
+                                 crossorigin="anonymous"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" 
+                                 class="w-full h-full object-cover" 
+                                 alt="${day.title}">
                             <div class="hidden flex-col items-center justify-center p-10 text-art-gold text-center">
                                 <span class="text-4xl mb-2">❦</span>
-                                <p class="text-sm italic">Изображение <strong>${day.imgNum}.jpg</strong> не найдено.</p>
+                                <p class="text-sm italic">Изображение <strong>${day.imgNum}.jpg</strong> не загрузилось.</p>
+                                <p class="text-[10px] mt-2 opacity-50">Проверьте подключение или путь в репозитории.</p>
                             </div>
                         </div>
                     </div>
