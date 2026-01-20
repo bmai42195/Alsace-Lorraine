@@ -89,6 +89,9 @@
             font-size: 1.5rem;
             margin: 1rem 0;
         }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen italic">
@@ -129,125 +132,46 @@
 
         const itineraryData = [
             { 
-                id: 1, imgNum: 1, date: "20 марта", title: "Эпфиг", 
-                history: "Деревня Эпфиг стоит на древнеримской дороге. Часовня Сен-Маргарит — шедевр романской архитектуры XI века.",
-                points: [{name: "Chapelle Sainte-Marguerite", details: "Внимательно посмотрите на капители колонн: там можно найти загадочные головы и животных."}], 
-                gastronomy: [{type: "Винстуб", name: "Au Gourmand", desc: "Ужин в традициях старого Эльзаса."}], 
-                shopping: "Фермерские рынки — сыр Мюнстер.",
-                tips: "Прогуляйтесь к Fronholz — здесь находили следы галло-римских поселений." 
-            },
-            { 
-                id: 2, imgNum: 2, date: "21 марта", title: "Страсбург", 
-                history: "Страсбург был богатейшим вольным городом Священной Римской империи. Собор был самым высоким зданием мира 227 лет.",
+                id: 1, imgNum: 12, date: "20 марта", title: "Баден-Баден", 
+                history: "Выезд из Штутгарта. Погружение в атмосферу XIX века в Баден-Бадене — городе, который называли 'летней столицей Европы'. Здесь собиралась вся европейская знать и русская интеллигенция.", 
                 points: [
-                    {name: "Cathédrale Notre-Dame", details: "Рассмотрите шпиль — в 1794 году его спасли от сноса, надев гигантский фригийский колпак."},
-                    {name: "Petite France", details: "Район кожевников и мельников с XVI века."}
+                    {name: "Trinkhalle", details: "Галерея с 16 колоннами и фресками по мотивам шварцвальдских легенд. Идеальное место для начала прогулки."},
+                    {name: "Lichtentaler Allee", details: "Легендарный парк-променад вдоль реки Оос, обрамленный виллами в стиле модерн."},
+                    {name: "Kurhaus & Casino", details: "Дворец в стиле классицизма, чьи интерьеры Достоевский описал в романе 'Игрок'."}
                 ], 
-                gastronomy: [{type: "Обед", name: "Maison Kammerzell", desc: "Дом построен в 1427 году."}], 
-                shopping: "Rue des Orfèvres — сердце торговли со времен гильдий.",
-                tips: "Астрономические часы — шоу в 12:30." 
-            },
-            { 
-                id: 3, imgNum: 3, date: "22 марта", title: "Верхний Кенигсбург", 
-                history: "Замок на горе, восстановленный кайзером Вильгельмом II в 1908 году как символ имперского величия.",
-                points: [
-                    {name: "Haut-Koenigsbourg", details: "Оцените систему обороны и панорамный вид на долину Рейна."},
-                    {name: "Sélestat", details: "Здесь хранится первая запись о рождественской елке (1521 год)."}
+                gastronomy: [
+                    {type: "Обед", name: "Café König", desc: "Кулинарная легенда города. Рекомендуем торт 'Шварцвальд' и марципаны ручной работы."},
+                    {type: "Традиции", name: "Brennery", desc: "Продегустируйте местный фруктовый шнапс из черной вишни."}
                 ], 
-                gastronomy: [{type: "Оберне", name: "Le Bistro des Saveurs", desc: "Кухня с историческим колоритом."}], 
-                shopping: "Эльзасский текстиль.",
-                tips: "Внимательно смотрите на флюгеры замка — они воссозданы по чертежам эпохи." 
+                shopping: "Косметика на основе термальной воды Sans Soucis, ароматы Baden-Baden.", 
+                tips: "Если позволяет время, загляните в музей Фаберже или музей Фридера Бурды (современная архитектура на фоне исторического парка)." 
             },
+            { id: 2, imgNum: 2, date: "21 марта", title: "Страсбург", history: "Вольный город империи. Кафедральный собор.", points: [{name: "Cathédrale", details: "Шпиль в фригийском колпаке."}], gastronomy: [{type: "Обед", name: "Maison Kammerzell", desc: "Дом 1427 года."}], shopping: "Rue des Orfèvres.", tips: "Часы в 12:30." },
+            { id: 3, imgNum: 3, date: "22 марта", title: "Верхний Кенигсбург", history: "Замок-символ имперского величия.", points: [{name: "Haut-Koenigsbourg", details: "Панорама Рейна."}], gastronomy: [{type: "Оберне", name: "Le Bistro", desc: "Местная кухня."}], shopping: "Текстиль.", tips: "Смотрите на флюгеры." },
+            { id: 4, imgNum: 4, date: "23 марта", title: "Нанси", history: "Колыбель Арт-нуво.", points: [{name: "Place Stanislas", details: "Решетки Ламура."}], gastronomy: [{type: "Брассери", name: "Excelsior", desc: "Интерьер 1911 года."}], shopping: "Бергамоты Нанси.", tips: "Символ чертополоха." },
+            { id: 5, imgNum: 5, date: "24 марта", title: "Кольмар", history: "Родина Бартольди.", points: [{name: "Petite Venise", details: "Каналы Крютно."}], gastronomy: [{type: "Винстуб", name: "Le Fer Rouge", desc: "Старый центр."}], shopping: "Рислинг.", tips: "Музей Унтерлинден." },
+            { id: 6, imgNum: 10, date: "25 марта", title: "Вогезы", history: "Синие горы и туманные озера.", points: [{name: "Lac de Gérardmer", details: "Жемчужина массива."}], gastronomy: [{type: "Ферма", name: "Marcairie", desc: "Обед пастухов."}], shopping: "Черничное варенье.", tips: "Одевайтесь теплее." },
+            { id: 7, imgNum: 6, date: "26 марта", title: "Мец", history: "Город из желтого камня.", points: [{name: "Cathédrale", details: "Витражи Шагала."}], gastronomy: [{type: "Рынок", name: "Marché Couvert", desc: "Местные продукты."}], shopping: "Мирабелевый ликер.", tips: "Квартал Империал." },
+            { id: 8, imgNum: 7, date: "27 марта", title: "Риквир & Рибовилле", history: "Деревни XVI века.", points: [{name: "Dolder", details: "Башня XIII века."}], gastronomy: [{type: "Вино", name: "Maison Hugel", desc: "С 1639 года."}], shopping: "Пасхальный декор.", tips: "Замки Рибовилле." },
+            { id: 9, imgNum: 8, date: "28 марта", title: "Мон-Сент-Одиль", history: "Языческая стена и монастырь.", points: [{name: "Mur Païen", details: "300 000 блоков."}], gastronomy: [{type: "Илльхойзерн", name: "Auberge de l'Ill", desc: "Легенда."}], shopping: "Мед.", tips: "Свой источник." },
             { 
-                id: 4, imgNum: 4, date: "23 марта", title: "Нанси", 
-                history: "Столица польского короля Станислава и колыбель стиля Арт-нуво в начале XX века.",
-                points: [
-                    {name: "Place Stanislas", details: "Объект ЮНЕСКО с золочеными решетками Жана Ламура."},
-                    {name: "Musée de l'École de Nancy", details: "Музей в бывшем доме коллекционера Корбена."}
-                ], 
-                gastronomy: [{type: "Брассери", name: "Excelsior", desc: "Интерьер 1911 года — вершина стиля Арт-нуво."}], 
-                shopping: "Бергамоты Нанси и печенье макарон.",
-                tips: "Ищите символ чертополоха на зданиях." 
-            },
-            { 
-                id: 5, imgNum: 5, date: "24 марта", title: "Кольмар", 
-                history: "Город, где время остановилось. Родина Бартольди, создателя Статуи Свободы.",
-                points: [
-                    {name: "La Petite Venise", details: "Живописные каналы в квартале Крютно."},
-                    {name: "Eguisheim", details: "Крошечная деревня, построенная по кругу."}
-                ], 
-                gastronomy: [{type: "Винстуб", name: "Le Fer Rouge", desc: "Исторический ресторан в центре."}], 
-                shopping: "Местное вино Рислинг.",
-                tips: "Посетите музей Унтерлинден ради Изенгеймского алтаря." 
-            },
-            { 
-                id: 6, imgNum: 10, date: "25 марта", title: "Вогезы", 
-                history: "Синие горы, вдохновлявшие художников текучими формами своих склонов и туманными озерами.",
-                points: [
-                    {name: "Lac de Gérardmer", details: "Ледниковое озеро, жемчужина горного массива."},
-                    {name: "Hohneck", details: "Вершина с видом на долину и, иногда, Альпы."}
-                ], 
-                gastronomy: [{type: "Горная ферма", name: "Marcairie", desc: "Традиционный обед пастухов."}], 
-                shopping: "Деревянные сувениры и черничное варенье.",
-                tips: "Одевайтесь многослойно, погода в горах переменчива." 
-            },
-            { 
-                id: 7, imgNum: 6, date: "26 марта", title: "Мец", 
-                history: "Город из желтого 'камня Жомон', столица Австразии при Каролингах.",
-                points: [
-                    {name: "Cathédrale Saint-Étienne", details: "Витражи Марка Шагала."},
-                    {name: "Quartier Impérial", details: "Немецкая архитектура начала XX века."}
-                ], 
-                gastronomy: [{type: "Рынок", name: "Marché Couvert", desc: "Местные продукты и закуски."}], 
-                shopping: "Мирабелевый ликер.",
-                tips: "Прогуляйтесь у стен храма Тампльеров." 
-            },
-            { 
-                id: 8, imgNum: 7, date: "27 марта", title: "Риквир & Рибовилле", 
-                history: "Деревни-крепости, сохранившие облик процветающего Эльзаса XVI столетия.",
-                points: [
-                    {name: "Dolder", details: "Сторожевая башня-ворота XIII века."},
-                    {name: "Ribeauvillé", details: "Прогулка к руинам трех замков."}
-                ], 
-                gastronomy: [{type: "Дегустация", name: "Maison Hugel", desc: "Семейное виноделие с 1639 года."}], 
-                shopping: "Керамика и пасхальный декор.",
-                tips: "В Риквире зайдите во дворцы виноделов." 
-            },
-            { 
-                id: 9, imgNum: 8, date: "28 марта", title: "Мон-Сент-Одиль", 
-                history: "Святое место на высоте 764 метра. Кельтская Языческая стена окружает гору на 10 км.",
-                points: [
-                    {name: "Монастырь", details: "Гробница святой Одилии и панорамная терраса."},
-                    {name: "Mur Païen", details: "Мегалитическое сооружение из 300 000 блоков."}
-                ], 
-                gastronomy: [{type: "Обед", name: "L'Auberge de l'Ill", desc: "Легенда региона в Илльхойзерне."}], 
-                shopping: "Травяные сборы и мед.",
-                tips: "Наберите воды из святого источника." 
-            },
-            { 
-                id: 10, imgNum: 9, date: "29 марта", title: "Финал", 
-                history: "Завершение пути в Суффленхайме — городе, где глина превращается в искусство с XII века.",
-                points: [{name: "Мастерские гончаров", details: "Процесс создания знаменитых форм для Бэкеоффе."}], 
-                gastronomy: [{type: "Традиция", name: "Kugelhopf", desc: "Кекс, испеченный в местной форме."}], 
-                shopping: "Глиняная посуда ручной работы.",
-                tips: "Выбирайте формы с традиционным цветочным узором." 
+                id: 10, imgNum: 1, date: "29 марта", title: "Эпфиг — Штутгарт", 
+                history: "Заключительный день. Прощание с уютным Эпфигом. Пора собрать впечатления и гостинцы перед дорогой домой.", 
+                points: [{name: "Chapelle Sainte-Marguerite", details: "Утренняя прогулка к часовне в тишине эльзасских виноградников."}], 
+                gastronomy: [{type: "Завтрак", name: "Boulangerie Local", desc: "Свежая выпечка и ароматный кофе."}], 
+                shopping: "Сыр Мюнстер, эльзасский джем и пара бутылок Рислинга.", 
+                tips: "Дорога до Штутгарта займет чуть меньше двух часов." 
             }
         ];
 
         function renderDayList() {
             const list = document.getElementById('day-list');
             list.innerHTML = '';
-            itineraryData.forEach((day, index) => {
+            itineraryData.forEach((day) => {
                 const div = document.createElement('div');
                 const isActive = day.id === currentDayId;
                 div.className = `p-5 cursor-pointer transition-all duration-300 border-b border-art-gold/20 ${isActive ? 'active-day scale-105' : 'bg-transparent text-art-dark hover:text-art-wine'}`;
-                
-                div.onclick = () => { 
-                    currentDayId = day.id; 
-                    renderDayList(); 
-                    renderDayDetail(); 
-                };
-
+                div.onclick = () => { currentDayId = day.id; renderDayList(); renderDayDetail(); };
                 div.innerHTML = `
                     <div class="flex justify-between items-center">
                         <div>
@@ -264,84 +188,56 @@
         function renderDayDetail() {
             const day = itineraryData.find(d => d.id === currentDayId);
             if (!day) return;
-
             const view = document.getElementById('day-detail-view');
-            // Используем imgNum для ссылки на файл
             const imageSrc = `${GITHUB_BASE_URL}${day.imgNum}.jpg`;
 
             view.innerHTML = `
                 <div class="animate-fadeIn">
                     <div class="text-center mb-10">
-                        <span class="text-art-gold text-sm tracking-[0.3em] uppercase">Глава ${currentDayId}</span>
+                        <span class="text-art-gold text-sm tracking-[0.3em] uppercase">Глава ${day.id}</span>
                         <h2 class="text-5xl md:text-6xl text-art-wine my-4">${day.title}</h2>
                         <div class="ornament">❧ ——— ❦ ——— ❧</div>
                     </div>
-                    
                     <div class="art-nouveau-frame mb-12">
                         <div class="img-container">
-                            <img src="${imageSrc}" 
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" 
-                                 class="w-full h-full object-cover" 
-                                 alt="${day.title}">
+                            <img src="${imageSrc}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover" alt="${day.title}">
                             <div class="hidden flex-col items-center justify-center p-10 text-art-gold text-center">
                                 <span class="text-4xl mb-2">❦</span>
                                 <p class="text-sm italic">Изображение <strong>${day.imgNum}.jpg</strong> не найдено.</p>
-                                <p class="text-xs mt-2 opacity-50 break-all">${imageSrc}</p>
                             </div>
                         </div>
                     </div>
-
                     <div class="grid md:grid-cols-2 gap-12">
                         <div class="space-y-10">
                             <section>
                                 <h4 class="text-3xl text-art-dark border-b-2 border-art-gold/30 pb-2 mb-4">Хроника</h4>
-                                <p class="text-art-dark/90 leading-relaxed italic text-lg border-l-4 border-art-gold pl-4 bg-art-gold/5 py-4">
-                                    ${day.history}
-                                </p>
+                                <p class="text-art-dark/90 italic text-lg border-l-4 border-art-gold pl-4 bg-art-gold/5 py-4 leading-relaxed">${day.history}</p>
                             </section>
-
                             <section>
                                 <h4 class="text-3xl text-art-dark border-b-2 border-art-gold/30 pb-2 mb-4">Наследие</h4>
-                                ${day.points.map(p => `
-                                    <div class="mb-6">
-                                        <h5 class="text-xl text-art-wine mb-1 uppercase text-xs tracking-widest font-bold">❧ ${p.name}</h5>
-                                        <p class="text-art-dark/80 leading-relaxed">${p.details}</p>
-                                    </div>
-                                `).join('')}
+                                ${day.points.map(p => `<div class="mb-6"><h5 class="text-art-wine font-bold">❧ ${p.name}</h5><p class="text-sm text-gray-700 mt-1">${p.details}</p></div>`).join('')}
                             </section>
                         </div>
-
                         <div class="space-y-10">
                             <div class="bg-white p-8 rounded-lg border-2 border-art-gold/20 shadow-inner">
-                                <h4 class="text-3xl text-art-dark mb-6">Гастрономия</h4>
-                                ${day.gastronomy.map(g => `
-                                    <div class="mb-6 last:mb-0">
-                                        <span class="text-[10px] font-bold text-art-gold uppercase tracking-widest block mb-1">${g.type}</span>
-                                        <h5 class="text-lg text-art-wine font-bold italic">${g.name}</h5>
-                                        <p class="text-sm text-gray-600 italic mt-1 leading-snug">${g.desc}</p>
-                                    </div>
-                                `).join('')}
+                                <h4 class="text-3xl mb-6">Гастрономия</h4>
+                                ${day.gastronomy.map(g => `<div class="mb-4"><span class="text-xs text-art-gold uppercase tracking-widest block mb-1">${g.type}</span><h5 class="font-bold text-art-wine italic">${g.name}</h5><p class="text-xs italic text-gray-600 mt-1">${g.desc}</p></div>`).join('')}
                             </div>
-
-                            <section class="p-4">
-                                <h4 class="text-2xl text-art-dark border-b-2 border-art-gold/30 pb-2 mb-4">Лавки и товары</h4>
+                            <div class="p-4">
+                                <h4 class="text-2xl text-art-dark border-b-2 border-art-gold/30 pb-2 mb-4">Лавки</h4>
                                 <p class="text-art-dark/80 italic leading-relaxed">❧ ${day.shopping}</p>
-                                <div class="mt-8 pt-6 border-t border-art-gold/40 text-sm text-art-sage italic">
+                                <div class="mt-8 pt-6 border-t border-art-gold/40 text-sm italic text-art-sage">
                                     <strong>Совет историка:</strong> ${day.tips}
                                 </div>
-                            </section>
+                            </div>
                         </div>
                     </div>
                 </div>
             `;
-            
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        window.onload = () => {
-            renderDayList();
-            renderDayDetail();
-        };
+        window.onload = () => { renderDayList(); renderDayDetail(); };
     </script>
 </body>
 </html>
