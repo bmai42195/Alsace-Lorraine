@@ -3,440 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Эльзас и Лотарингия: Полный Путеводитель</title>
-    <!-- Tailwind CSS -->
+    <title>Эльзас и Лотарингия: Путеводитель в стиле Арт-нуво</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Playfair Display & Noto Sans (Italic versions) -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&family=Noto+Sans:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        art: {
-                            sage: '#7B8E7E',
-                            gold: '#C5A059',
-                            wine: '#8B4343',
-                            cream: '#F9F4E8',
-                            dark: '#2D3436'
+                        art: { 
+                            sage: '#7B8E7E', 
+                            gold: '#C5A059', 
+                            wine: '#8B4343', 
+                            cream: '#FDFBF0', 
+                            dark: '#2D3436',
+                            border: '#D4B483'
                         }
-                    },
-                    fontFamily: {
-                        serif: ['Playfair Display', 'serif'],
-                        sans: ['Noto Sans', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <style>
-        * { font-style: italic !important; }
-        body {
-            background-color: #F9F4E8;
-            color: #2D3436;
-            background-image: radial-gradient(#C5A059 0.4px, transparent 0.4px);
-            background-size: 30px 30px;
+        body { 
+            background-color: #FDFBF0; 
+            color: #2D3436; 
+            font-family: 'Lora', serif;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
         }
-        .nouveau-border {
+        
+        h1, h2, h3, h4, .nouveau-font { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic;
+        }
+
+        .nouveau-border { 
+            border: 2px solid #C5A059; 
+            border-radius: 60px 15px 60px 15px; 
             position: relative;
-            border: 2px solid #C5A059;
-            border-radius: 40px 5px 40px 5px;
+            background: rgba(255, 255, 255, 0.7);
         }
-        .nouveau-header { font-family: 'Playfair Display', serif; }
-        .nav-item {
-            transition: all 0.3s ease;
-            border-radius: 0 50px 50px 0;
-            margin-right: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-        .active-day {
-            background: linear-gradient(90deg, #8B4343 0%, #C5A059 100%);
-            color: white !important;
-            padding-left: 1.5rem;
-            box-shadow: 4px 4px 10px rgba(139, 67, 67, 0.15);
-        }
-        .loading-dot {
-            width: 6px;
-            height: 6px;
-            background-color: #C5A059;
-            border-radius: 50%;
-            display: inline-block;
-            margin-left: 8px;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-            100% { opacity: 0.3; transform: scale(0.8); }
-        }
-        .day-scroller::-webkit-scrollbar { width: 3px; }
-        .day-scroller::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 10px; }
-        .detail-card {
-            background: white;
-            border-left: 1px solid #C5A059;
-            padding-left: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        .art-nouveau-frame {
-            position: relative;
-            padding: 15px;
-            background: #fff;
-            border: 1px solid #C5A059;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-        .art-nouveau-frame::before {
-            content: "❦";
+
+        .nouveau-border::before {
+            content: "❧";
             position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #F9F4E8;
-            padding: 0 10px;
+            top: 10px;
+            left: 20px;
             color: #C5A059;
+            font-size: 2rem;
+        }
+
+        .active-day { 
+            background: #8B4343; 
+            color: #FDFBF0 !important;
+            border-radius: 30px 5px 30px 5px;
+            box-shadow: 0 4px 15px rgba(139, 67, 67, 0.3);
+        }
+
+        .art-nouveau-frame { 
+            padding: 20px; 
+            background: #fff; 
+            border: 1px solid #C5A059; 
+            box-shadow: inset 0 0 15px rgba(197, 160, 89, 0.2);
+            border-radius: 10px;
+        }
+
+        .img-container { 
+            width: 100%; 
+            aspect-ratio: 16 / 9; 
+            background: #eee; 
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 5px;
+        }
+
+        #day-list::-webkit-scrollbar { width: 4px; }
+        #day-list::-webkit-scrollbar-track { background: transparent; }
+        #day-list::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 10px; }
+
+        .ornament {
+            color: #C5A059;
+            text-align: center;
             font-size: 1.5rem;
+            margin: 1rem 0;
         }
-        .img-container {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #eee;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .img-placeholder-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30c0-10 10-20 20-20s10 10 0 20-20 10-20 10-10-10-20-10-10-10 0-20 20 10 20 20z' fill='%23C5A059' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
-        }
-        .loading-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(249, 244, 232, 0.8);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 20;
-        }
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid #C5A05933;
-            border-top: 3px solid #8B4343;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="flex flex-col min-h-screen font-sans">
+<body class="flex flex-col min-h-screen italic">
 
-    <header class="bg-art-dark text-art-cream py-12 border-b-4 border-art-gold shadow-lg">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="nouveau-header text-5xl md:text-6xl mb-3">Эльзас и Лотарингия</h1>
-            <div class="flex items-center justify-center gap-4 text-art-gold mb-4">
-                <span class="text-3xl">❦</span>
-                <p class="uppercase tracking-[0.4em] text-sm font-light">Культурная Экспедиция 2026</p>
-                <span class="text-3xl">❦</span>
-            </div>
-            <div class="inline-block border border-art-gold/40 px-8 py-2 rounded-full text-sm italic">
-                Базирование: Эпфиг • Сердце винной дороги
-            </div>
+    <header class="bg-art-dark text-art-cream py-10 border-b-4 border-art-gold text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <svg width="100%" height="100%"><pattern id="pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M0 50 Q 25 0 50 50 T 100 50" fill="none" stroke="#C5A059" stroke-width="2"/></pattern><rect width="100%" height="100%" fill="url(#pattern)"/></svg>
         </div>
+        <h1 class="text-5xl md:text-6xl mb-2">Эльзас & Лотарингия</h1>
+        <p class="uppercase tracking-[0.4em] text-sm text-art-gold">Историческая экспедиция • 20–28 Марта 2026</p>
     </header>
 
-    <main class="flex-grow container mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
+    <main class="flex-grow container mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-12 gap-10">
         <aside class="lg:col-span-3">
-            <div class="bg-white/90 backdrop-blur-md p-6 nouveau-border sticky top-8 flex flex-col max-h-[85vh]">
-                <h2 class="nouveau-header text-2xl text-art-wine mb-6 text-center border-b border-art-gold/20 pb-4">Маршрут</h2>
-                <div class="day-scroller overflow-y-auto space-y-2 pr-2" id="day-list"></div>
-                <div id="global-status" class="mt-4 text-[10px] text-art-gold uppercase text-center opacity-60 italic">
-                    Ожидание...
-                </div>
+            <div class="sticky top-10">
+                <h3 class="text-art-wine text-2xl mb-6 border-b-2 border-art-gold/30 pb-2">Календарь</h3>
+                <div id="day-list" class="space-y-3 max-h-[70vh] overflow-y-auto pr-4"></div>
             </div>
         </aside>
 
         <section class="lg:col-span-9">
-            <div id="day-detail-view" class="bg-white/80 p-8 md:p-12 nouveau-border shadow-xl min-h-screen transition-all duration-700"></div>
+            <div id="day-detail-view" class="nouveau-border p-8 md:p-12 shadow-2xl min-h-[700px]"></div>
         </section>
     </main>
 
-    <footer class="bg-art-dark text-art-cream py-20 border-t-8 border-art-gold mt-16 text-center">
-        <div class="container mx-auto px-4 italic opacity-80 leading-loose">
-            «В Арт-Нуво природа не просто копируется, она переосмысляется через линию...»
-        </div>
+    <footer class="py-10 text-center text-art-gold opacity-60 text-sm">
+        <div class="ornament">❦ ————— ❧</div>
+        <p>© 2026 Хроники Старой Европы</p>
     </footer>
 
     <script>
-        const apiKey = ""; 
-        const generatedImages = {}; 
-        const imageLoadingStates = {}; 
+        const LOCAL_PATH = "C:/Users/Johnsons/Documents/Alsace-Lorraine/";
         let currentDayId = 1;
-        let isBatchProcessing = false;
 
         const itineraryData = [
             { 
-                id: 1, 
-                date: "20 марта", 
-                title: "Начало Эльзаса: Эпфиг", 
-                summary: "Городок, где камни помнят римлян и традиции виноделия передаются веками.", 
-                imagePrompt: "Art Nouveau illustration of a cozy Alsatian village Epfig with vineyards, rolling hills, morning mist, in the style of Alphonse Mucha, pastel colors.", 
-                points: [
-                    { name: "Эпфиг (Epfig)", details: "Уютная коммуна, расположенная на знаменитой Винной дороге. Здесь можно увидеть аутентичные фахверковые дома XVII-XVIII веков. Эпфиг славится своими виноградниками Grand Cru Fronholz." }, 
-                    { name: "Часовня Сен-Маргарит", details: "Жемчужина романского стиля XI века. Часовня стоит на месте древнеримского поселения. Её архитектура поражает лаконичностью и гармонией." }
-                ],
-                gastronomy: [
-                    { type: "Ресторан", name: "A la Couronne", desc: "Семейный ресторан с 1685 года. Попробуйте здесь 'Шукрут' — тушеную капусту с местными колбасками." },
-                    { type: "Кофейня", name: "Pâtisserie Kamm", desc: "Славится своими традиционными эльзасскими пирогами и ароматным кофе." },
-                    { type: "Шопинг", name: "Domaine Ostertag", desc: "Винодельня мирового уровня. Купите здесь бутылку Рислинга с уникальными авторскими этикетками." }
-                ],
-                tips: "Обязательно посетите частную дегустацию у местного винодела — здесь делают лучший Клеман (игристое)." 
+                id: 1, date: "20 марта", title: "Эпфиг", 
+                summary: "Корни Эльзаса: от римских вилл до аббатств.", 
+                history: "Деревня Эпфиг стоит на древнеримской дороге. В XI веке она была важным религиозным пунктом. Часовня Сен-Маргарит — это не просто здание, а памятник эпохи, когда христианство в этих краях только укреплялось, вбирая в себя кельтские символы.",
+                points: [{name: "Chapelle Sainte-Marguerite", details: "Внимательно посмотрите на капители колонн: там можно найти загадочные головы и животных, характерных для раннего романского искусства."}], 
+                gastronomy: [{type: "Винстуб", name: "Au Gourmand", desc: "Ужин в традициях старого Эльзаса."}], 
+                shopping: "Фермерские рынки — сыр Мюнстер, технология производства которого не менялась со времен монахов VII века.",
+                tips: "Прогуляйтесь к Fronholz — здесь находили следы галло-римских поселений." 
             },
             { 
-                id: 2, 
-                date: "21 марта", 
-                title: "Страсбург: Имперский масштаб", 
-                summary: "Перекресток Европы, объединяющий величие готики и изящество французского ренессанса.", 
-                imagePrompt: "Strasbourg Cathedral and Petite France canals in Art Nouveau style, intricate stained glass, flowing water, wood-framed houses.", 
+                id: 2, date: "21 марта", title: "Страсбург", 
+                summary: "Вольный имперский город и столица гуманизма.", 
+                history: "В Средние века Страсбург был богатейшим вольным городом Священной Римской империи. Именно здесь Иоганн Гутенберг изобрел печатный пресс, а в 1792 году впервые прозвучала «Марсельеза». Собор был самым высоким зданием мира на протяжении 227 лет.",
                 points: [
-                    { name: "Страсбургский собор (Notre-Dame)", details: "Один из самых высоких соборов мира, построенный из розового вогезского песчаника. Его фасад напоминает каменное кружево." }, 
-                    { name: "Квартал 'Маленькая Франция'", details: "Самый живописный район Страсбурга, объект наследия ЮНЕСКО. Это сеть каналов, вдоль которых стоят старинные дома кожевников и рыбаков." }
-                ],
-                gastronomy: [
-                    { type: "Ресторан", name: "Maison Kammerzell", desc: "Самый красивый дом города у собора. Фирменное блюдо — рыбный шукрут." },
-                    { type: "Кофейня", name: "Christian", desc: "Легендарная кондитерская с интерьерами в стиле барокко. Лучший горячий шоколад." },
-                    { type: "Шопинг", name: "Beauvillé", desc: "Бутик знаменитого эльзасского текстиля с принтами, вдохновленными природой и фольклором." }
-                ],
-                tips: "Возьмите речной трамвайчик Batorama — это лучший способ увидеть город с необычного ракурса." 
+                    {name: "Cathédrale Notre-Dame", details: "Рассмотрите шпиль — в 1794 году революционеры хотели снести его как символ 'неравенства', но жители надели на него гигантский красный фригийский колпак из жести, чтобы спасти памятник."},
+                    {name: "Petite France", details: "Этот район был домом не только для мельников, но и для больных сифилисом (так называемой 'французской болезнью') в XVI веке, отсюда и ироничное название."}
+                ], 
+                gastronomy: [{type: "Обед", name: "Maison Kammerzell", desc: "Дом построен в 1427 году. Внутри сохранились фрески XVI века."}], 
+                shopping: "Rue des Orfèvres (Улица Ювелиров) — сердце торгового Страсбурга со времен гильдий.",
+                tips: "Астрономические часы — чудо инженерии XVI века, предсказывающее церковные праздники на десятилетия вперед." 
             },
             { 
-                id: 3, 
-                date: "22 марта", 
-                title: "Вертикаль истории: Замки", 
-                summary: "Могущественные крепости на вершинах гор, хранящие тайны Средневековья.", 
-                imagePrompt: "Medieval Haut-Koenigsbourg castle on a mountain top, fog, dark green forests, Art Nouveau border with organic ivy.", 
+                id: 3, date: "22 марта", title: "Верхний Кенигсбург", 
+                summary: "Символ имперских амбиций и рыцарской чести.", 
+                history: "Замок был сожжен шведами во время Тридцатилетней войны и лежал в руинах 250 лет. В начале XX века кайзер Вильгельм II восстановил его, чтобы доказать германские корни Эльзаса. Это уникальный пример того, как в 1908 году представляли идеальный замок XV века.",
                 points: [
-                    { name: "Верхний Кенигсбург (Haut-Koenigsbourg)", details: "Величественная крепость XII века, возвышающаяся на скале. Замок был полностью отреставрирован в начале XX века." }, 
-                    { name: "Город Оберне (Obernai)", details: "Второй по посещаемости город департамента Нижний Рейн. Оберне сохранил кольцо крепостных стен и уют площадей." }
-                ],
-                gastronomy: [
-                    { type: "Ресторан", name: "La Cloche", desc: "Атмосфера старой таверны и огромные порции традиционного Тарт Фламбе." },
-                    { type: "Кофейня", name: "L'Oie Gourmande", desc: "Уютное место для послеобеденного чая с домашним Кугельхопфом." },
-                    { type: "Шопинг", name: "Le Comptoir de Mathilde", desc: "Магазин ремесленных сладостей, паштетов и знаменитых 'соленых' баба́." }
-                ],
-                tips: "В Оберне попробуйте местный 'пирог святой Одилии' в одной из кондитерских на площади." 
+                    {name: "Haut-Koenigsbourg", details: "Найдите на потолке обеденного зала герб кайзера — политическое послание того времени."},
+                    {name: "Sélestat", details: "Здесь хранится первая запись о рождественской елке (1521 год) в истории!"}
+                ], 
+                gastronomy: [{type: "Оберне", name: "Le Bistro des Saveurs", desc: "Расположен в городе, который был любимым местом охоты меровингских королей."}], 
+                shopping: "Эльзасский текстиль в Оберне — наследие ткацких мануфактур XVIII века.",
+                tips: "Внимательно смотрите на флюгеры замка — они воссозданы по чертежам эпохи Максимилиана I." 
             },
             { 
-                id: 4, 
-                date: "23 марта", 
-                title: "Нанси: Столица Арт-Нуво", 
-                summary: "Город, ставший колыбелью французского модерна и изящных искусств.", 
-                imagePrompt: "Place Stanislas Nancy with golden wrought iron gates, Art Nouveau floral ornaments, Nancy School style, dragonfly motifs.", 
+                id: 4, date: "23 марта", title: "Нанси", 
+                summary: "Последний приют польского короля и колыбель Модерна.", 
+                history: "Станислав Лещинский, тесть Людовика XV и бывший король Польши, получил Лотарингию в пожизненное владение. Он превратил Нанси в одну из самых стильных столиц Европы. Позже, в 1900-х, город стал центром школы Арт-нуво (Школа Нанси), противостоявшей индустриальной серости.",
                 points: [
-                    { name: "Площадь Станислава (Place Stanislas)", details: "Считается одной из самых красивых площадей в мире. Ансамбль XVIII века с его золочеными коваными воротами." }, 
-                    { name: "Музей Школы Нанси", details: "Уникальный музей, посвященный движению Арт-Нуво в бывшем особняке мецената Корбена." }
-                ],
-                gastronomy: [
-                    { type: "Ресторан", name: "Excelsior", desc: "Шедевр Арт-Нуво! Интерьер 1911 года. Попробуйте местную закуску 'Паштет Нанси'." },
-                    { type: "Кофейня", name: "Maison Macarons", desc: "Единственное место, где делают оригинальные макароны Нанси по рецепту 1793 года." },
-                    { type: "Шопинг", name: "Daum", desc: "Флагманский магазин легендарной стекольной мануфактуры. Изделия из хрусталя." }
-                ],
-                tips: "Прогуляйтесь до виллы Мажорель (Villa Majorelle) — это первый полностью модернистский дом в Нанси." 
+                    {name: "Place Stanislas", details: "Решетки Жана Ламура не просто украшение — это символ союза Франции и Лотарингии."},
+                    {name: "Musée de l'École de Nancy", details: "Здесь представлены работы Галле, который использовал научные знания о растениях для создания своих ваз."}
+                ], 
+                gastronomy: [{type: "Брассери", name: "Excelsior", desc: "Интерьер 1911 года — вершина стиля Арт-нуво в архитектуре ресторанов."}], 
+                shopping: "Макароны Нанси — рецепт 1793 года, созданный монахинями, спасавшимися от Революции.",
+                tips: "Найдите 'чертополох' на зданиях — это символ Лотарингии ('кто уколет, тот пожалеет')." 
             },
             { 
-                id: 5, 
-                date: "24 марта", 
-                title: "Кольмар: Город-открытка", 
-                summary: "Сказочное переплетение фахверка, цветов и воды в сердце эльзасских традиций.", 
-                imagePrompt: "Colmar Little Venice and Eguisheim spiral streets, colorful timber-framed houses, spring flowers, Art Nouveau poster style.", 
+                id: 5, date: "24 марта", title: "Кольмар", 
+                summary: "Убежище для искусства и колыбель Статуи Свободы.", 
+                history: "Кольмар чудом избежал разрушений во всех войнах. Именно здесь родился Фредерик Бартольди, создатель Статуи Свободы. А Изенгеймский алтарь в музее Унтерлинден считается 'Мона Лизой' северного Возрождения — его создали для лечения больных антоновым огнем (отравление спорыньей).",
                 points: [
-                    { name: "Район 'Маленькая Венеция'", details: "Старинный квартал вдоль реки Лош. Дома здесь выкрашены в яркие цвета, создавая неповторимый ансамбль." }, 
-                    { name: "Деревня Эгисхайм (Eguisheim)", details: "Уникальная деревня, построенная концентрическими кругами вокруг замка. Улочки украшены геранью." }
-                ],
-                gastronomy: [
-                    { type: "Ресторан", name: "JY'S", desc: "Две звезды Мишлен на берегу канала в историческом здании XVII века." },
-                    { type: "Кофейня", name: "Au Croissant Doré", desc: "Антикварная кофейня с атмосферой начала века. Идеально для завтрака." },
-                    { type: "Шопинг", name: "Potterie d'Eguisheim", desc: "Традиционная эльзасская керамика ручной работы — горшки и формы для кексов." }
-                ],
-                tips: "В Кольмаре посетите музей Унтерлинден, чтобы увидеть знаменитый Изенгеймский алтарь." 
+                    {name: "La Petite Venise", details: "Раньше по этим каналам возили овощи огородники из пригородов прямо к рынку."},
+                    {name: "Eguisheim", details: "Место рождения Папы Льва IX. Архитектура деревни напоминает раковину улитки."}
+                ], 
+                gastronomy: [{type: "Винстуб", name: "Le Fer Rouge", desc: "Название напоминает о кузнецах, работавших в этом квартале в Средневековье."}], 
+                shopping: "Антиквариат Кольмара — часто можно найти подлинные предметы быта XIX века.",
+                tips: "Найдите дом Пфистера (1537 г.) — первый пример архитектуры Ренессанса в городе." 
             },
             { 
-                id: 6, 
-                date: "25 марта", 
-                title: "Мец: Свет и Солнечный Камень", 
-                summary: "Город с 3000-летней историей, где сияет золотистый камень 'пьер де жомон'.", 
-                imagePrompt: "Metz Cathedral with Marc Chagall stained glass windows, glowing yellow stone, Art Nouveau stained glass patterns, mystic light.", 
+                id: 6, date: "25 марта", title: "Мец", 
+                summary: "Город, помнящий Карла Великого.", 
+                history: "Мец был столицей королевства Австразия и колыбелью династии Каролингов. Собор Сент-Этьен строился 300 лет. В 1871 году город стал мощной немецкой крепостью, что отразилось в грандиозном Квартале Империал, построенном для устрашения величием Германии.",
                 points: [
-                    { name: "Собор Сент-Этьен (Cathédrale Saint-Étienne)", details: "Называемый 'Фонарем Бога' из-за самой большой площади остекления в Европе. Витражи Шагала." }, 
-                    { name: "Центр Помпиду-Мец", details: "Шедевр современной архитектуры от Шигеру Бана с уникальной деревянной крышей." }
-                ],
-                gastronomy: [
-                    { type: "Ресторан", name: "Brasserie Flo", desc: "Классика французского бистро в изысканном интерьере бывшего театра." },
-                    { type: "Кофейня", name: "Fox Coffee Shop", desc: "Современная кофейня в историческом центре с отличным спешелти-кофе." },
-                    { type: "Шопинг", name: "Marché Couvert de Metz", desc: "Рынок в здании епископского дворца. Купите ликеры из лотарингской мирабели." }
-                ],
-                tips: "Обязательно пройдите через квартал Империаль (Quartier Impérial) — это учебник архитектуры." 
+                    {name: "Cathédrale Saint-Étienne", details: "Посмотрите на витражи Шагала — они изображают сцены из Ветхого Завета в уникальной сине-желтой гамме."},
+                    {name: "Gare de Metz", details: "Вокзал был построен для быстрой переброски войск кайзера, поэтому в нем есть личные покои императора."}
+                ], 
+                gastronomy: [{type: "Рынок", name: "Marché Couvert", desc: "Расположен в бывшем епископском дворце, строительство которого прервала Революция."}], 
+                shopping: "Мирабелевый ликер — символ Лотарингии, плод, завезенный сюда из Крестовых походов.",
+                tips: "Прогуляйтесь по набережной Мозеля — здесь сохранились укрепления римских времен." 
+            },
+            { 
+                id: 7, date: "26 марта", title: "Риквир & Рибовилле", 
+                summary: "Виноградники, пережившие века.", 
+                history: "Риквир разбогател в XVI веке на торговле вином с Голландией и Англией. Город был настолько богат, что смог откупиться от разрушений во время Тридцатилетней войны. Рибовилле же был резиденцией лордов Рибопьер, покровителей всех бродячих музыкантов региона.",
+                points: [
+                    {name: "Dolder", details: "Верхние ворота XIII века. Внутри — музей с колодцем, который спасал город во время осад."},
+                    {name: "Ribeauvillé Castles", details: "Три замка на холме были сигнальной системой: огни на башнях предупреждали о приближении врага."}
+                ], 
+                gastronomy: [{type: "Дегустация", name: "Maison Hugel", desc: "Семья производит вино в этом здании с 1639 года!"}], 
+                shopping: "Керамика в стиле 'Рибовилле' — яркие растительные мотивы.",
+                tips: "Найдите 'дом вора' (Maison du Voleur) в Риквире — там сохранилась камера пыток XVI века." 
+            },
+            { 
+                id: 8, date: "27 марта", title: "Мон-Сент-Одиль", 
+                summary: "Святилище кельтов и пристанище святой.", 
+                history: "Задолго до христианства здесь было кельтское святилище. Одилия, слепая дочь герцога, согласно легенде, прозрела после крещения и основала монастырь в VII веке. Языческая стена (Mur Païen) — это 300 000 каменных блоков, соединенных без раствора, тайна происхождения которых не разгадана до сих пор.",
+                points: [
+                    {name: "Sainte-Odile", details: "Рассмотрите мозаики в часовне — они рассказывают о жизни святой в византийском стиле."},
+                    {name: "Mur Païen", details: "Возраст стены оценивают примерно в 3000 лет. Это крупнейший мегалитический памятник Европы."}
+                ], 
+                gastronomy: [{type: "Мишлен", name: "L'Auberge de l'Ill", desc: "Легендарное место, хранившее 3 звезды Мишлен рекордные 50 лет."}], 
+                shopping: "В монастыре продают 'Слезы Одилии' — особые четки и травяные сборы.",
+                tips: "У источника Св. Одилии прохладно даже летом — это самая высокая точка вашего маршрута." 
+            },
+            { 
+                id: 9, date: "28 марта", title: "Финал", 
+                summary: "Завершение круга времени.", 
+                history: "Деревня Суффленхайм получила право бесплатно добывать глину в лесу Агено еще от императора Фридриха Барбароссы в XII веке. С тех пор это главный центр гончарного искусства, сохранивший формы и узоры эпохи Священной Римской империи.",
+                points: [{name: "Soufflenheim", details: "В некоторых мастерских до сих пор используют печи, которым более 100 лет."}], 
+                gastronomy: [{type: "Традиция", name: "Kugelhopf", desc: "Этот кекс в форме тюрбана — символ эльзасского гостеприимства."}], 
+                shopping: "Формы для запекания — настоящий эльзасский предмет культа.",
+                tips: "Перед выездом зайдите в местную церковь — там часто выставлены работы современных гончаров." 
             }
         ];
 
-        async function fetchWithRetry(url, options, maxRetries = 5) {
-            let delay = 1000;
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    const response = await fetch(url, options);
-                    if (response.ok) return response;
-                    if (response.status === 429) { await new Promise(res => setTimeout(res, delay)); delay *= 2; continue; }
-                    return response;
-                } catch (e) {
-                    if (i === maxRetries - 1) throw e;
-                    await new Promise(res => setTimeout(res, delay));
-                    delay *= 2;
-                }
-            }
-        }
-
-        // ПОСЛЕДОВАТЕЛЬНАЯ ГЕНЕРАЦИЯ (Исправляет проблему GitHub)
-        async function startSequentialGeneration() {
-            if (isBatchProcessing) return;
-            isBatchProcessing = true;
-            
-            const status = document.getElementById('global-status');
-            for (const day of itineraryData) {
-                if (!generatedImages[day.id]) {
-                    if (status) status.innerText = `Генерация: День ${day.id}...`;
-                    await generateImage(day.id);
-                }
-            }
-            if (status) status.innerText = "Все визуализации готовы";
-            isBatchProcessing = false;
-        }
-
-        async function generateImage(dayId) {
-            if (imageLoadingStates[dayId] === 'done' || imageLoadingStates[dayId] === 'loading') return;
-            
-            const day = itineraryData.find(d => d.id === dayId);
-            imageLoadingStates[dayId] = 'loading';
-            renderDayList();
-            
-            // Если этот день сейчас открыт, показываем спиннер
-            if (currentDayId === dayId) {
-                const container = document.getElementById(`img-wrap-${dayId}`);
-                if (container) container.innerHTML = '<div class="loading-overlay"><div class="spinner"></div><p class="mt-4 text-art-wine text-[10px] uppercase tracking-widest">Создание картины...</p></div>';
-            }
-
-            try {
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
-                const response = await fetchWithRetry(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        instances: [ { prompt: day.imagePrompt } ],
-                        parameters: { sampleCount: 1 }
-                    })
-                });
-
-                if (response && response.ok) {
-                    const result = await response.json();
-                    if (result.predictions?.[0]?.bytesBase64Encoded) {
-                        generatedImages[dayId] = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
-                        imageLoadingStates[dayId] = 'done';
-                    } else {
-                        imageLoadingStates[dayId] = 'error';
-                    }
-                } else {
-                    imageLoadingStates[dayId] = 'error';
-                }
-            } catch (error) {
-                imageLoadingStates[dayId] = 'error';
-            } finally {
-                renderDayList();
-                if (currentDayId === dayId) renderDayDetail(dayId); // Обновляем вид, если пользователь на этом дне
-            }
-        }
-
-        function selectDay(id) {
-            currentDayId = id;
-            renderDayList();
-            renderDayDetail(id);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Если изображение для выбранного дня еще не готово, пробуем запустить генерацию (если не идет батч)
-            if (!generatedImages[id] && imageLoadingStates[id] !== 'loading') {
-                generateImage(id);
-            }
-        }
-
         function renderDayList() {
             const list = document.getElementById('day-list');
-            if (!list) return;
             list.innerHTML = '';
             itineraryData.forEach(day => {
-                const isActive = day.id === currentDayId;
-                const state = imageLoadingStates[day.id];
-                let indicator = state === 'loading' ? '<span class="loading-dot"></span>' : (state === 'done' ? '<span class="ml-2 text-art-gold">✓</span>' : (state === 'error' ? '<span class="ml-2 text-red-400">!</span>' : ''));
-
                 const div = document.createElement('div');
-                div.className = `nav-item p-4 cursor-pointer text-sm transition-all ${isActive ? 'active-day' : 'hover:bg-art-gold/10'}`;
-                div.onclick = () => selectDay(day.id);
-                div.innerHTML = `<span class="block text-[10px] uppercase opacity-60">${day.date} ${indicator}</span><span class="nouveau-header font-bold block">${day.title}</span>`;
+                div.className = `p-5 cursor-pointer transition-all duration-500 border-b border-art-gold/20 ${day.id === currentDayId ? 'active-day scale-105' : 'bg-transparent text-art-dark hover:text-art-wine'}`;
+                div.onclick = () => { currentDayId = day.id; renderDayList(); renderDayDetail(); };
+                div.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-[10px] block opacity-70 uppercase tracking-tighter">${day.date}</span>
+                            <span class="text-xl nouveau-font">${day.title}</span>
+                        </div>
+                        <span class="text-2xl opacity-30">❦</span>
+                    </div>
+                `;
                 list.appendChild(div);
             });
         }
 
-        function renderDayDetail(id) {
-            const day = itineraryData.find(d => d.id === id);
+        function renderDayDetail() {
+            const day = itineraryData.find(d => d.id === currentDayId);
             const view = document.getElementById('day-detail-view');
-            if (!day || !view) return;
-            
-            const pointsHtml = day.points.map(p => `
-                <div class="detail-card">
-                    <h3 class="nouveau-header text-2xl text-art-wine italic mb-2">❦ ${p.name}</h3>
-                    <p class="text-art-dark leading-relaxed italic text-justify">${p.details}</p>
-                </div>
-            `).join('');
-
-            const gastroHtml = day.gastronomy.map(g => `
-                <div class="mb-4 last:mb-0">
-                    <span class="text-[10px] font-bold text-art-gold uppercase tracking-wider block mb-1">${g.type}</span>
-                    <h5 class="font-bold text-art-wine">${g.name}</h5>
-                    <p class="text-sm text-gray-600 leading-snug italic">${g.desc}</p>
-                </div>
-            `).join('');
-
-            const imgContent = generatedImages[id] 
-                ? `<img src="${generatedImages[id]}" class="w-full h-full object-cover animate-fadeIn" alt="Day ${id}">` 
-                : `<div class="loading-overlay"><div class="spinner"></div><p class="mt-4 text-art-wine text-[10px] uppercase tracking-widest">${imageLoadingStates[id] === 'error' ? 'Ошибка загрузки' : 'Загрузка шедевра...'}</p></div>`;
+            const imageSrc = `${LOCAL_PATH}${day.id}.jpg`;
 
             view.innerHTML = `
                 <div class="animate-fadeIn">
-                    <div class="mb-10 border-b-2 border-art-gold/20 pb-6">
-                        <span class="text-art-gold text-sm uppercase tracking-[0.3em] font-bold">День ${day.id} • ${day.date}</span>
-                        <h2 class="nouveau-header text-5xl text-art-dark mt-2 mb-4 italic">${day.title}</h2>
-                        <p class="text-lg text-gray-500 italic">« ${day.summary} »</p>
+                    <div class="text-center mb-10">
+                        <span class="text-art-gold text-sm tracking-[0.3em] uppercase">Глава ${day.id}</span>
+                        <h2 class="text-5xl md:text-6xl text-art-wine my-4">${day.title}</h2>
+                        <div class="ornament">❧ ——— ❦ ——— ❧</div>
                     </div>
                     
-                    <div class="art-nouveau-frame">
-                        <div id="img-wrap-${id}" class="img-container img-placeholder-pattern">${imgContent}</div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                        <div class="md:col-span-2">
-                            <h4 class="nouveau-header text-3xl text-art-dark mb-6 border-b border-art-gold/20 pb-2 italic">Локации</h4>
-                            <div class="space-y-6">${pointsHtml}</div>
-                        </div>
-                        <div>
-                            <h4 class="nouveau-header text-3xl text-art-dark mb-6 border-b border-art-gold/20 pb-2 italic">Рекомендации</h4>
-                            <div class="bg-art-gold/5 p-6 border-l-2 border-art-gold">${gastroHtml}</div>
+                    <div class="art-nouveau-frame mb-12">
+                        <div class="img-container">
+                            <img src="${imageSrc}" 
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" 
+                                 class="w-full h-full object-cover" 
+                                 alt="${day.title}">
+                            <div class="hidden flex-col items-center justify-center p-10 text-art-gold text-center">
+                                <span class="text-4xl mb-2">❦</span>
+                                <p class="text-sm italic">Изображение ${day.id}.jpg <br> в каталоге Alsace-Lorraine</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="mt-12 bg-art-sage/5 p-6 rounded-3xl border border-art-gold/20 italic">
-                        <h4 class="nouveau-header text-art-wine text-lg mb-2">Совет:</h4>
-                        <p class="text-art-dark">❧ ${day.tips}</p>
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div class="space-y-10">
+                            <section>
+                                <h4 class="text-3xl text-art-dark border-b-2 border-art-gold/30 pb-2 mb-4">Историческая справка</h4>
+                                <p class="text-art-dark/90 leading-relaxed italic text-lg border-l-4 border-art-gold pl-4 bg-art-gold/5 py-4">
+                                    ${day.history}
+                                </p>
+                            </section>
+
+                            <section>
+                                <h4 class="text-3xl text-art-dark border-b-2 border-art-gold/30 pb-2 mb-4">Наследие</h4>
+                                ${day.points.map(p => `
+                                    <div class="mb-6">
+                                        <h5 class="text-xl text-art-wine mb-1 uppercase text-xs tracking-widest font-bold">❧ ${p.name}</h5>
+                                        <p class="text-art-dark/80 leading-relaxed">${p.details}</p>
+                                    </div>
+                                `).join('')}
+                            </section>
+                        </div>
+
+                        <div class="space-y-10">
+                            <div class="bg-white p-8 rounded-lg border-2 border-art-gold/20 shadow-inner">
+                                <h4 class="text-3xl text-art-dark mb-6">Вкусы Прошлого</h4>
+                                ${day.gastronomy.map(g => `
+                                    <div class="mb-6 last:mb-0">
+                                        <span class="text-[10px] font-bold text-art-gold uppercase tracking-widest block mb-1">${g.type}</span>
+                                        <h5 class="text-lg text-art-wine font-bold italic">${g.name}</h5>
+                                        <p class="text-sm text-gray-600 italic mt-1 leading-snug">${g.desc}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+
+                            <section class="p-4">
+                                <h4 class="text-2xl text-art-dark border-b-2 border-art-gold/30 pb-2 mb-4">Лавки и товары</h4>
+                                <p class="text-art-dark/80 italic leading-relaxed">❧ ${day.shopping}</p>
+                                <div class="mt-8 pt-6 border-t border-art-gold/40 text-sm text-art-sage italic">
+                                    <strong>Совет историка:</strong> ${day.tips}
+                                </div>
+                            </section>
+                        </div>
                     </div>
                 </div>
             `;
@@ -444,15 +321,12 @@
 
         window.onload = () => {
             renderDayList();
-            renderDayDetail(currentDayId);
-            // Запускаем последовательно, чтобы избежать блокировок
-            startSequentialGeneration();
+            renderDayDetail();
         };
     </script>
-
     <style>
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .animate-fadeIn { animation: fadeIn 1s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
     </style>
 </body>
 </html>
