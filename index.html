@@ -120,7 +120,16 @@
     </footer>
 
     <script>
-        const LOCAL_PATH = "C:/Users/Johnsons/Documents/Alsace-Lorraine/";
+        /**
+         * НАСТРОЙКИ GITHUB
+         */
+        const GITHUB_USER = "bmai42195"; 
+        const GITHUB_REPO = "Alsace-Lorraine"; 
+        const GITHUB_BRANCH = "main"; 
+        
+        // Базовый путь к папке images в вашем репозитории
+        const GITHUB_BASE_URL = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/images/`;
+
         let currentDayId = 1;
 
         const itineraryData = [
@@ -251,7 +260,9 @@
         function renderDayDetail() {
             const day = itineraryData.find(d => d.id === currentDayId);
             const view = document.getElementById('day-detail-view');
-            const imageSrc = `${LOCAL_PATH}${day.id}.jpg`;
+            
+            // Формируем прямую ссылку на RAW изображение в GitHub
+            const imageSrc = `${GITHUB_BASE_URL}${day.id}.jpg`;
 
             view.innerHTML = `
                 <div class="animate-fadeIn">
@@ -269,7 +280,8 @@
                                  alt="${day.title}">
                             <div class="hidden flex-col items-center justify-center p-10 text-art-gold text-center">
                                 <span class="text-4xl mb-2">❦</span>
-                                <p class="text-sm italic">Изображение ${day.id}.jpg <br> в каталоге Alsace-Lorraine</p>
+                                <p class="text-sm italic">Изображение ${day.id}.jpg не найдено.<br>Убедитесь, что файлы загружены в папку 'images' в ветке '${GITHUB_BRANCH}'.</p>
+                                <p class="text-xs mt-2 opacity-50 text-wrap break-all">${imageSrc}</p>
                             </div>
                         </div>
                     </div>
