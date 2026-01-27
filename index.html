@@ -320,7 +320,7 @@
             const day = itineraryData.find(d => d.id === currentDayId);
             if (!day) return;
             const view = document.getElementById('day-detail-view');
-            const imageSrc = `${GITHUB_BASE_URL}${day.imgNum}.jpg`;
+            const imageSrc = `${GITHUB_BASE_URL}${day.imgNum}.jpg?v=${Date.now()}`;
 
             const showStats = !day.hideStats;
 
@@ -391,4 +391,5 @@
         window.onload = () => { renderDayList(); renderDayDetail(); };
     </script>
 </body>
+
 </html>
